@@ -648,7 +648,7 @@
       <option name="number" value="Default" />
       <updated>1421466722465</updated>
       <workItem from="1421466730093" duration="701000" />
-      <workItem from="1421470029907" duration="827000" />
+      <workItem from="1421470029907" duration="863000" />
     </task>
     <task id="LOCAL-00001" summary="added static floder">
       <created>1421472625311</created>
@@ -668,11 +668,17 @@
       <option name="project" value="LOCAL" />
       <updated>1421472881046</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added static floder">
+      <created>1421472896539</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1421472896539</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1528000" />
+    <option name="totallyTimeSpent" value="1564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="808" extended-state="0" />
