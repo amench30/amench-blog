@@ -1,11 +1,86 @@
-<html>
-    <head>
-        <title>{% block head_title %}Welcome to my blog{% endblock %}</title>
-    </head>
-    <body>
-        <h1>{% block title %}Welcome to my block{% endblock %}</h1>
-        {% block content %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static "icons/favicon.ico" %}">
+    <link href="/feed/" rel="alternate" type="application/rss+xml" title="Amench Blog Feed" />
+    <title>Amench Blog</title>
 
-        {% endblock %}
-    </body>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="{% url "index" %}">Home</a>
+          <a class="blog-nav-item" href="#">About</a>
+          <a class="blog-nav-item" href="#">Portfolio</a>
+          <a class="blog-nav-item" href="#">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Amir's Blog</h1>
+        <p class="lead blog-description">Amir Mencher's official blog.</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+          {% block blog_entries %} {% endblock %}
+
+          {% if is_paginated %}
+            <ul class="pager">
+              <li {% if not page_obj.has_previous %}class="disabled"{% endif %}><a {% if page_obj.has_previous %}href="?page={{ page_obj.previous_page_number }}"{% endif %}>Prev</a></li>
+              <li {% if not page_obj.has_next %}class="disabled"{% endif %}><a {% if page_obj.has_next %}href="?page={{ page_obj.next_page_number }}"{% endif %}>Next</a></li>
+            </ul>
+    {% endif %}
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>This is a Blog that I created.</p>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+      <p>&copy;<a href="http://www.amenchdesign.com">Amench Design</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/docs.min.js" %}"></script>
+  </body>
 </html>

@@ -1,20 +1,13 @@
-from .models import Blog, Category
-from django.shortcuts import render_to_response, get_object_or_404
+from django.views import generic
+from . import models
 
-def index(request):
-    return render_to_response('index.html', {
-        'categories': Category.objects.all(),
-        'posts': Blog.objects.all()[:5]
-    })
 
-def view_post(request, slug):   
-    return render_to_response('view_post.html', {
-        'post': get_object_or_404(Blog, slug=slug)
-    })
+class BlogIndex(generic.ListView):
+    queryset = models.Entry.objects.published()
+    template_name = "home.html"
+    paginate_by = 2
 
-def view_category(request, slug):
-    category = get_object_or_404(Category, slug=slug)
-    return render_to_response('view_category.html', {
-        'category': category,
-        'posts': Blog.objects.filter(category=category)[:5]
-    })
+
+class BlogDetail(generic.DetailView):
+    model = models.Entry
+    template_name = "post.html"
