@@ -76,3 +76,14 @@ class Entry(models.Model):
         verbose_name = "Blog Entry"
         verbose_name_plural = "Blog Entries"
         ordering = ["-created"]
+
+
+# class ContactForm(models.Model):
+#     name = models.CharField(max_length=100)
+#     email = models.EmailField()
+#     subject = models.CharField(max_length=100)
+#     message = models.TextField()
+#
+#     def __str__(self):
+#         return self.name
+

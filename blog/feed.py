@@ -8,4 +8,4 @@ class LatestPosts(Feed):
     description = "Latest Posts of Q"
 
     def items(self):
-        return Entry.objects.published()[:5]
+        return Entry.objects.published()[:4]

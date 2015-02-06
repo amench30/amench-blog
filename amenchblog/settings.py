@@ -34,7 +34,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'crispy_forms',
+    'floppyforms'
     'blog',
     'django_markdown',
 )
@@ -82,5 +83,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"), )
+# STATIC_ROOT = (os.path.join(BASE_DIR, "static"), )
+# print STATIC_ROOT
+# TEMPLATE_DIRS = (os.path.join(BASE_DIR, "blog/templates"), )
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+STATIC_ROOT = 'staticfiles'
+
+DEBUG = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+{% load static %}
+
+{% block bodyblock %}
+
+<header class="intro-header" style="background-image: url('/static/img/bg3.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Blog</h1>
+                        <hr class="small">
+                        <span class="subheading">Welcome to my blog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% for object in object_list %}
+{#{% include "/blog/templates/post.html" %}#}
+<div class="post">
+    <h2>{{ object.title }}</h2>
+    <p class="meta">
+      {{ object.created }}
+    </p>
+    {{ object.body|markdown }}
+  </div>
+
+    {% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+{% if object_list.has_previous %}
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+
+
+
+
+{% endblock bodyblock %}
+
+

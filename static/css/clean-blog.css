@@ -16,6 +16,10 @@ p {
 p a {
   text-decoration: underline;
 }
+
+ul {
+    list-style: none;
+}
 h1,
 h2,
 h3,
